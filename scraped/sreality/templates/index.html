@@ -1,0 +1,7 @@
+{% for page in pager %}
+    <a href="/sreality/index?offset={{ page.1 }}">{{ page.0 }}</a>
+{% endfor %}
+{% for real_estate in real_estates %}
+    <h1>{{ real_estate.title }}</h1>
+    <img src="{{ real_estate.image_url }}" alt="{{ real_estate.title }}" width="350">
+{% endfor %}

@@ -1,0 +1,25 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: scraped
+    ports:
+      - "15432:5432"
+  web:
+    container_name: scraped_web
+    volumes:
+      - ./:/app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+#  scrapinghub:
+#    image: scrapinghub/splash
+#    ports:
+#      - "8050:8050"
